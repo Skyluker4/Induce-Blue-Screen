@@ -1,2 +1,2 @@
-# Induce-Blue-Screen
+# Induce Blue Screen
 Causes a Windows machine to crash when run.
