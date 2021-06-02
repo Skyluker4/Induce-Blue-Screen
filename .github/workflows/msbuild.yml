@@ -12,7 +12,7 @@ env:
   BUILD_CONFIGURATION: Release
 
 jobs:
-  Build x86:
+  Build-x86:
     runs-on: windows-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:PlatformTarget=x86 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
-  Build x64:
+  Build-x64:
     runs-on: windows-latest
 
     steps:
