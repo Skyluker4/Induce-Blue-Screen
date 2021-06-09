@@ -1,0 +1,50 @@
+name: "Upload Release"
+
+on:
+  push:
+    branches:
+      "main"
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  upload-release:
+    name: "Upload Release"
+    
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Build x86
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m /p:Platform=x86 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      
+    - name: Build x64
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m /p:Platform=x64 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      
+    - name: Move x86 Binary
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: mv Release/InduceBlueScreen.exe InduceBlueScreen-x86.exe
+      
+    - name: Move x64 Binary
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: mv x64/Release/InduceBlueScreen.exe InduceBlueScreen-x64.exe
+    
+    - name: Upload
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          files: |
+            LICENSE.txt
+            InduceBluescreen-x86.exe
+            InduceBluescreen-x64.exe
