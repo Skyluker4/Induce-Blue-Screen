@@ -1,4 +1,4 @@
-name: "Upload Release"
+name: "Upload Prerelease"
 
 on:
   push:
@@ -11,8 +11,8 @@ env:
   BUILD_CONFIGURATION: Release
 
 jobs:
-  upload-release:
-    name: "Upload Release"
+  upload-prerelease:
+    name: "Upload Prerelease"
     
     runs-on: windows-latest
 
