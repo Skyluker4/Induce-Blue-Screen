@@ -29,16 +29,19 @@ jobs:
       run: msbuild /m /p:Platform=x86 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
       
     - name: Move x86 Binary
+      working-directory: ${{env.GITHUB_WORKSPACE}}
       run: mv Induce-Blue-Screen/Release/InduceBlueScreen.exe InduceBlueScreen-x86.exe
       
     - name: Build x64
+      working-directory: ${{env.GITHUB_WORKSPACE}}
       run: msbuild /m /p:Platform=x64 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
       
     - name: Move x64 Binary
+      working-directory: ${{env.GITHUB_WORKSPACE}}
       run: mv Induce-Blue-Screen/x64/Release/InduceBlueScreen.exe InduceBlueScreen-x64.exe
     
     - name: Upload
-    - uses: "marvinpinto/action-automatic-releases@latest"
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
