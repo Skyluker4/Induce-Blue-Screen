@@ -44,6 +44,7 @@ jobs:
       with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
+          automatic_release_tag: latest-commit
           files: |
             LICENSE.txt
             InduceBluescreen-x86.exe
