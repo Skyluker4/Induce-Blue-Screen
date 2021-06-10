@@ -1,4 +1,4 @@
-name: "Upload Prerelease"
+name: "Upload Pre-release"
 
 on:
   push:
@@ -11,13 +11,13 @@ env:
 
 jobs:
   upload-prerelease:
-    name: "Upload Prerelease"
+    name: "Upload Pre-release"
     
     runs-on: windows-latest
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@main
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
@@ -39,7 +39,7 @@ jobs:
       run: mv x64/Release/InduceBlueScreen.exe InduceBlueScreen-x64.exe
     
     - name: Upload
-      uses: "marvinpinto/action-automatic-releases@latest"
+      uses: marvinpinto/action-automatic-releases@latest
       with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
