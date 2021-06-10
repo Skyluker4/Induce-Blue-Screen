@@ -11,7 +11,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@main
+    - name: Checkout
+      uses: actions/checkout@main
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
@@ -23,7 +24,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@main
+    - name: Checkout
+      uses: actions/checkout@main
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
