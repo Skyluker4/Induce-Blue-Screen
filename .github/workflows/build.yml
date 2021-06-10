@@ -7,8 +7,13 @@ env:
   BUILD_CONFIGURATION: Release
 
 jobs:
-  x86:
+  Build:
     runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ "x86", "x64" ]
 
     steps:
     - name: Checkout
@@ -18,16 +23,4 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Build
-      run: msbuild /m /p:Platform=x86 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
-  x64:
-    runs-on: windows-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@main
-
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
-
-    - name: Build
-      run: msbuild /m /p:Platform=x64 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild /m /p:Platform=${{matrix.platform}} /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
