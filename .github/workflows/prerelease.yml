@@ -6,7 +6,6 @@ on:
       "main"
 
 env:
-  # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
   BUILD_CONFIGURATION: Release
 
@@ -31,11 +30,11 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: msbuild /m /p:Platform=x64 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
       
-    - name: Move x86 Binary
+    - name: Move and Rename x86 Binary
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: mv Release/InduceBlueScreen.exe InduceBlueScreen-x86.exe
       
-    - name: Move x64 Binary
+    - name: Move and Rename x64 Binary
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: mv x64/Release/InduceBlueScreen.exe InduceBlueScreen-x64.exe
     
