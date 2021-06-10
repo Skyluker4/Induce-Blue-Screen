@@ -9,15 +9,15 @@ env:
   SOLUTION_FILE_PATH: .
   BUILD_CONFIGURATION: Release
 
-defaults:
-  run:
-    working-directory: ${{env.GITHUB_WORKSPACE}}
-
 jobs:
   upload-prerelease:
     name: "Upload Pre-release"
     
     runs-on: windows-latest
+
+    defaults:
+      run:
+        working-directory: ${{env.GITHUB_WORKSPACE}}
 
     steps:
     - name: Checkout
