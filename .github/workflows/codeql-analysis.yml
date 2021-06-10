@@ -27,12 +27,12 @@ jobs:
       uses: actions/checkout@main
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@latest
+      uses: github/codeql-action/init@main
       with:
         languages: ${{ matrix.language }}
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@latest
+      uses: github/codeql-action/autobuild@main
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@latest
+      uses: github/codeql-action/analyze@main
