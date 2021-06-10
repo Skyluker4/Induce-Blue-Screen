@@ -7,9 +7,7 @@ env:
   BUILD_CONFIGURATION: Release
 
 jobs:
-  Build-x86:
-    name: Build x86
-  
+  x86:
     runs-on: windows-latest
 
     steps:
@@ -21,9 +19,7 @@ jobs:
 
     - name: Build
       run: msbuild /m /p:Platform=x86 /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
-  Build-x64:
-    name: Build x64
-  
+  x64:
     runs-on: windows-latest
 
     steps:
