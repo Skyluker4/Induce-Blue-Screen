@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@main
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@master
+      uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Build x86
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@main
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@master
+      uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Build x64
       working-directory: ${{env.GITHUB_WORKSPACE}}
