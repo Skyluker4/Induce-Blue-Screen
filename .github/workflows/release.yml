@@ -40,6 +40,6 @@ jobs:
           repo_token: ${{secrets.GITHUB_TOKEN}}
           prerelease: false
           files: |
-            LICENSE.txt
+            LICENSE
             InduceBluescreen-x86.exe
             InduceBluescreen-x64.exe
